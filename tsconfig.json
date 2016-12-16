@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    //"outFile": "dist/pre/aurelia-blog.js",
+    "outDir": "dist/amd",
+    "preserveConstEnums": true,
+    "removeComments": true,
+    "target": "es6",
+    "declarationDir": "dist"
+  },
+  "include": [
+    "src/**/*.ts",
+    "custom_typings/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+}

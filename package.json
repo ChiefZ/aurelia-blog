@@ -1,0 +1,38 @@
+{
+  "name": "aurelia-blog",
+  "version": "0.0.1",
+  "description": "Aurelia blog plugin",
+  "main": "./dist/amd/aurelia-blog.js",
+  "typings": "./dist/aurelia-blog.d.ts",
+  "repository": "https://github.com/chiefz/aurelia-blog",
+  "author": "ChiefZ",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rimraf dist/*",
+    "lint": "tslint --force --format verbose \"src/**/*.ts\"",
+    "build": "yarn run clean && yarn run lint && echo Using TypeScript && tsc --version && tsc --pretty",
+    "test": "yarn run build && mocha --compilers ts:ts-node/register --recursive tests/**/*.spec.ts",
+    "watch": "yarn run build -- --watch",
+    "watch:test": "yarn run test -- --watch",
+    "release": "standard-version"
+  },
+  "devDependencies": {
+    "@types/chai": "3.4.30",
+    "@types/method-override": "0.0.29",
+    "@types/mocha": "2.2.29",
+    "@types/node": "6.0.31",
+    "aurelia-tools": "^1.0.0",
+    "chai": "^3.5.0",
+    "mocha": "^3.0.1",
+    "require-dir": "^0.3.1",
+    "rimraf": "^2.5.4",
+    "standard-version": "^4.0.0",
+    "ts-node": "^1.2.2",
+    "tslint": "^4.0.2",
+    "typescript": "^2.1.4",
+    "yargs": "^6.5.0"
+  },
+  "dependencies": {
+    "aurelia-framework": "^1.0.8"
+  }
+}
