@@ -5,6 +5,16 @@ import { IBlogConfig } from "../models/blog-config";
 
 export class BlogService
 {
+    public static defaultOptions = {
+        defaultRecent: 10,
+        staticStoreConfig: {
+            basePath: "blog",
+            multiLanguage: false,
+            tagsFile: "tags.json",
+        },
+        storeType: "static",
+    };
+
     public store: BaseStoreService;
     public options: IBlogConfig;
 
@@ -12,15 +22,7 @@ export class BlogService
     {
         if (!opts || !opts.storeType)
         {
-            opts = {
-                defaultRecent: 10,
-                staticStoreConfig: {
-                    basePath: "blog",
-                    multiLanguage: false,
-                    tagsFile: "tags.json",
-                },
-                storeType: "static",
-            };
+            opts = BlogService.defaultOptions;
         }
 
         this.options = opts;
@@ -41,4 +43,5 @@ export class BlogService
             }
         }
     }
+
 }

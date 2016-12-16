@@ -1,7 +1,9 @@
 import { expect } from "chai";
 import * as Mocha from "mocha";
+import * as Sinon from "sinon";
 
 import { IBlogConfig } from "../../src/models/blog-config";
+import { BaseStoreService } from "../../src/services/base-store-service";
 import { BlogService } from "../../src/services/blog-service";
 
 describe("blog service default config", () =>
@@ -37,5 +39,31 @@ describe("blog service default config", () =>
     {
         expect(blogService.store).to.be.ok;
         expect(blogService.store.type).to.be.eq("static");
+    });
+});
+
+describe("blog service custom store service", () =>
+{
+    let blogService: BlogService;
+
+    it("should be accepted with an own implementation", () =>
+    {
+        class CustomStoreService extends BaseStoreService
+        {
+            public type = "unknown_store_type";
+
+            public getTags(): any
+            {
+                return [];
+            }
+
+            public getLatestPosts(limit?: number): any
+            {
+                return [];
+            }
+        }
+
+        let b = new BlogService(null, new CustomStoreService());
+        expect(b.store.type).to.be.eq("unknown_store_type");
     });
 });
